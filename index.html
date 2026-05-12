@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio & Ressources | Ingénierie</title>
+    
+    <!-- استيراد خط Poppins العصري من جوجل -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* إعدادات التصميم العصرية */
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #3b82f6; /* أزرق عصري */
+            --accent-hover: #2563eb;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        
+        body { background-color: var(--bg-color); color: var(--text-main); line-height: 1.7; scroll-behavior: smooth; }
+        
+        header { background: rgba(30, 41, 59, 0.9); padding: 20px; text-align: center; border-bottom: 2px solid var(--accent); position: sticky; top: 0; z-index: 100; backdrop-filter: blur(10px); }
+        header h1 { font-size: 1.8rem; margin-bottom: 10px; font-weight: 700; letter-spacing: 1px; }
+        header span { color: var(--accent); }
+        nav { display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; }
+        nav a { color: var(--text-main); text-decoration: none; font-weight: 600; transition: 0.3s; font-size: 0.95rem; }
+        nav a:hover { color: var(--accent); }
+
+        main { max-width: 1050px; margin: 50px auto; padding: 0 20px; }
+        
+        section { margin-bottom: 60px; }
+        section h2 { color: var(--text-main); font-size: 2rem; margin-bottom: 25px; position: relative; padding-bottom: 10px; }
+        section h2::after { content: ''; position: absolute; left: 0; bottom: 0; width: 60px; height: 4px; background: var(--accent); border-radius: 2px; }
+        
+        .about-box { background: var(--card-bg); padding: 35px; border-radius: 12px; border-left: 5px solid var(--accent); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+        .about-box p { font-size: 1.05rem; color: #cbd5e1; margin-bottom: 15px; }
+
+        .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+        
+        .card { background: var(--card-bg); padding: 25px; border-radius: 12px; cursor: pointer; transition: all 0.3s ease; border: 1px solid transparent; }
+        .card:hover { transform: translateY(-8px); border-color: var(--accent); box-shadow: 0 15px 30px rgba(0,0,0,0.3); }
+        .card h3 { color: var(--accent); margin-bottom: 12px; font-size: 1.3rem; }
+        .card p { color: var(--text-muted); font-size: 0.95rem; }
+
+        .arabic-text { font-family: 'Arial', sans-serif; text-align: right; margin-top: 10px; color: #e2e8f0; font-size: 1.1rem;}
+
+        /* تصميم النافذة المنبثقة (Modal) */
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); z-index: 999; justify-content: center; align-items: center; backdrop-filter: blur(5px); }
+        .modal-content { background: var(--card-bg); padding: 40px; border-radius: 15px; max-width: 500px; width: 90%; text-align: center; position: relative; border: 1px solid var(--accent); }
+        .close-btn { position: absolute; top: 15px; right: 20px; font-size: 1.5rem; color: var(--text-muted); cursor: pointer; transition: 0.3s; }
+        .close-btn:hover { color: #ef4444; }
+        .modal-title { color: var(--accent); font-size: 1.5rem; margin-bottom: 15px; }
+        .modal-desc { margin-bottom: 25px; color: #cbd5e1; }
+        .download-btn { background: var(--accent); color: #fff; padding: 10px 25px; text-decoration: none; border-radius: 8px; font-weight: 600; display: inline-block; transition: 0.3s; }
+        .download-btn:hover { background: var(--accent-hover); }
+
+        footer { text-align: center; padding: 30px; border-top: 1px solid #334155; margin-top: 50px; color: var(--text-muted); }
+    </style>
+</head>
+<body>
+<header>
+        <h1>Portfolio <span>&</span> Ressources</h1>
+        <nav>
+            <a href="#about">À propos</a>
+            <a href="#portfolio">Projets</a>
+            <a href="#resources">Bibliothèque</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- قسم النبذة التعريفية (احترافي جداً) -->
+        <section id="about">
+            <h2>À propos de moi</h2>
+            <div class="about-box">
+                <p>Bonjour, je suis <strong>ABDELHAMID BEN-JAH</strong>, étudiant en Classes Préparatoires aux Grandes Écoles (filière TSI) à <strong>Mohammadia</strong>.</p>
+                <p>Passionné par les sciences de l'ingénieur, je voue un intérêt particulier à l'électronique, à l'automatique et à l'optimisation des systèmes industriels. Mon approche allie la rigueur analytique des mathématiques et de la physique à la puissance des outils numériques et de la programmation.</p>
+                <p>Ce site est mon espace personnel : une vitrine de mes projets d'ingénierie et une bibliothèque ouverte où je partage mes ressources, mes synthèses et mes outils pour aider la communauté étudiante et technique.</p>
+            </div>
+        </section>
+
+        <!-- قسم الموارد والملخصات العامة -->
+        <section id="resources">
+            <h2>Ressources & Synthèses</h2>
+            <p style="margin-bottom: 25px; color: var(--text-muted);">Cliquez sur une catégorie pour afficher les détails et télécharger les documents.</p>
+            
+            <div class="grid-container">
+                <!-- بطاقة 1: علوم المهندس والإلكترونيات -->
+                <div class="card" onclick="openModal('Sciences de l\'Ingénieur (SI)', 'Fiches de synthèse couvrant l\'électronique analogique/numérique, l\'asservissement des systèmes et la mécanique. Idéal pour les révisions de concours.', '#')">
+                    <h3>⚙️ Sciences de l'Ingénieur</h3>
+                    <p>Électronique, Automatique et Mécanique des systèmes.</p>
+                </div>
+
+                <!-- بطاقة 2: الفيزياء والكيمياء -->
+                <div class="card" onclick="openModal('Physique & Chimie', 'Résumés structurés des lois fondamentales, de la thermodynamique à l\'électromagnétisme.', '#')">
+                    <h3>⚛️ Physique & Chimie</h3>
+                    <p>Synthèses globales des différents modules physiques.</p>
+                </div>
+
+                <!-- بطاقة 3: البرمجة والأنظمة -->
+                <div class="card" onclick="openModal('Informatique & Systèmes', 'Guides pratiques sur Linux Mint, scripts Python utiles (Numpy, web scraping) et astuces terminal.', '#')">
+                    <h3>💻 Informatique & Code</h3>
+                    <p>Développement Python, algorithmique et environnement Linux.</p>
+                </div>
+
+                <!-- بطاقة 4: الإنتاجية واللغات -->
+                <div class="card" onclick="openModal('Productivité & Outils', 'Templates de To-Do lists pour gérer la charge de travail en CPGE et paquets Anki pour optimiser la mémorisation.', '#')">
+                    <h3>📈 Productivité</h3>
+                    <p>Méthodologie, gestion du temps et paquets Anki.</p>
+                </div>
+
+                <!-- بطاقة 5: الشعر والإلقاء (مدمجة باللغة العربية) -->
+                <div class="card" onclick="openModal('Art de l\'Éloquence', 'Ressources sur la maîtrise du souffle, les pauses vocaliques et une sélection de poèmes classiques.', '#')">
+                    <h3>📜 Poésie & Éloquence</h3>
+                    <div class="arabic-text" dir="rtl">
+                        مختارات من الشعر العربي الكلاسيكي وتقنيات فن الإلقاء والخطابة.
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 ABDELHAMID BEN-JAH - Conçu avec passion pour l'ingénierie et le code.</p>
+    </footer>
+<!-- هيكل النافذة المنبثقة المخفية -->
+    <div class="modal-overlay" id="myModal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h3 class="modal-title" id="modalTitle">Titre</h3>
+            <p class="modal-desc" id="modalDesc">Description du contenu ici...</p>
+            <!-- الزر الذي سيحمل رابط التحميل مستقبلاً -->
+            <a href="#" class="download-btn" id="modalLink" download>Télécharger les fichiers</a>
+        </div>
+    </div>
+
+    <!-- سكربت التحكم في النوافذ المنبثقة -->
+    <script>
+        function openModal(title, description, fileLink) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalDesc').innerText = description;
+            document.getElementById('modalLink').href = fileLink;
+            document.getElementById('myModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('myModal').style.display = 'none';
+        }
+
+        // إغلاق النافذة إذا تم النقر خارجها
+        window.onclick = function(event) {
+            let modal = document.getElementById('myModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+    </script>
+
+</body>
+</html>
