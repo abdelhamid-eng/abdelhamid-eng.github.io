@@ -53,6 +53,7 @@
                 </a>
                 <ul class="sub-menu blank"><li><a class="link_name" href="#library">Ressources CPGE</a></li></ul>
             </li>
+            <!-- زر من أنا في الشريط الجانبي بعد التعديل -->
             <li>
                 <a href="#about">
                     <i class='bx bx-user'></i>
@@ -61,6 +62,7 @@
                 <ul class="sub-menu blank"><li><a class="link_name" href="#about">Mon Profil</a></li></ul>
             </li>
         </ul>
+
     </nav>
 
     <!-- ==========================================
@@ -167,85 +169,116 @@
             </section>
 
             <!-- قسم المكتبة الموسوعية -->
-            <section id="library" class="content-section">
-                <div class="section-header">
-                    <h2><i class='bx bx-library'></i> Bibliothèque des Ressources</h2>
-                    <p>Fiches de révision et outils pour les classes préparatoires.</p>
+ <!-- قسم المكتبة الموسوعية (حسب السنوات) -->
+        <section id="library" class="content-section">
+            <div class="section-header">
+                <h2><i class='bx bx-library'></i> Bibliothèque des Ressources</h2>
+                <p>Sélectionnez votre niveau d'études pour accéder aux fiches par matière.</p>
+            </div>
+            
+            <div class="dynamic-grid" id="library-grid">
+                <!-- بطاقة 2STE -->
+                <div class="project-card" style="cursor: pointer;" onclick="openModal('Baccalauréat (2STE)', 'content-2ste')">
+                    <div class="card-img placeholder-img"><i class='bx bx-medal'></i></div>
+                    <div class="card-info">
+                        <h3>🎓 2STE</h3>
+                        <p>Sciences et Technologies Électriques.</p>
+                    </div>
                 </div>
-                <div class="dynamic-grid" id="library-grid">
-                    <!-- سيتم وضع البطاقات هنا (نفس فكرة الكود السابق ولكن بهيكل أقوى) -->
-<!-- بطاقة ملخص الفيزياء -->
-                    <div class="project-card">
-                        <div class="card-img placeholder-img"><i class='bx bx-atom'></i></div>
-                        <div class="card-info">
-                            <h3>Maths - 2STE</h3>
-                            <p>Fiches de synthèse.</p>
-                            <!-- لاحظ مسار الملف fichiers/thermo.pdf -->
-                            <a href="fichiers/2STE_Maths.pdf" class="btn-primary" style="display:block; text-align:center; text-decoration:none;" download>Télécharger le PDF</a>
-                        </div>
-                    </div>
-<div class="project-card">
-                        <div class="card-img placeholder-img"><i class='bx bx-atom'></i></div>
-                        <div class="card-info">
-                            <h3>Physique - 2STE</h3>
-                            <p>Fiches de synthèse.</p>
-                            <!-- لاحظ مسار الملف fichiers/thermo.pdf -->
-                            <a href="fichiers/2STE_Physique.pdf" class="btn-primary" style="display:block; text-align:center; text-decoration:none;" download>Télécharger le PDF</a>
-                        </div>
-                    </div>
-<div class="project-card">
-                        <div class="card-img placeholder-img"><i class='bx bx-atom'></i></div>
-                        <div class="card-info">
-                            <h3>Chimie - 2STE</h3>
-                            <p>Fiches de synthèse.</p>
-                            <!-- لاحظ مسار الملف fichiers/thermo.pdf -->
-                            <a href="fichiers/2STE_Chimie.pdf" class="btn-primary" style="display:block; text-align:center; text-decoration:none;" download>Télécharger le PDF</a>
-                        </div>
-                    </div>
-<div class="project-card">
-                        <div class="card-img placeholder-img"><i class='bx bx-atom'></i></div>
-                        <div class="card-info">
-                            <h3>SI - ADC - 2STE</h3>
-                            <p>Fiches de synthèse.</p>
-                            <!-- لاحظ مسار الملف fichiers/thermo.pdf -->
-                            <a href="fichiers/2STE_ADC.pdf" class="btn-primary" style="display:block; text-align:center; text-decoration:none;" download>Télécharger le PDF</a>
-                        </div>
-                    </div>
-<div class="project-card">
-                        <div class="card-img placeholder-img"><i class='bx bx-atom'></i></div>
-                        <div class="card-info">
-                            <h3>SI - ATC - 2STE</h3>
-                            <p>Fiches de synthèse.</p>
-                            <!-- لاحظ مسار الملف fichiers/thermo.pdf -->
-                            <a href="fichiers/2STE_ATC.pdf" class="btn-primary" style="display:block; text-align:center; text-decoration:none;" download>Télécharger le PDF</a>
-                        </div>
-                    </div>
-                    <!-- بطاقة حزم Anki -->
-                    <div class="project-card">
-                        <div class="card-img placeholder-img"><i class='bx bx-brain'></i></div>
-                        <div class="card-info">
-                            <h3>Paquets Anki - Vocabulaire Français</h3>
-                            <p>Decks et Sub-decks optimisés pour la mémorisation et la traduction en CPGE.</p>
-                            <a href="fichiers/anki_francais.apkg" class="btn-primary" style="display:block; text-align:center; text-decoration:none;" download>Télécharger le Deck</a>
-                        </div>
-                    </div>
 
-                    <!-- بطاقة بيئة لينكس -->
-                    <div class="project-card">
-                        <div class="card-img placeholder-img"><i class='bx bx-terminal'></i></div>
-                        <div class="card-info">
-                            <h3>Guide Linux Mint & Terminal</h3>
-                            <p>Comment configurer un environnement de développement Python et gérer ses fichiers.</p>
-                            <a href="fichiers/guide_linux.pdf" class="btn-primary" style="display:block; text-align:center; text-decoration:none;" download>Lire le Guide</a>
+                <!-- بطاقة Sup -->
+                <div class="project-card" style="cursor: pointer;" onclick="openModal('CPGE (1ère année - Sup)', 'content-sup')">
+                    <div class="card-img placeholder-img"><i class='bx bx-book-reader'></i></div>
+                    <div class="card-info">
+                        <h3>📘 Sup (TSI 1)</h3>
+                        <p>Physique, Maths, SI et Informatique.</p>
+                    </div>
+                </div>
+
+                <!-- بطاقة Spé -->
+                <div class="project-card" style="cursor: pointer;" onclick="openModal('CPGE (2ème année - Spé)', 'content-spe')">
+                    <div class="card-img placeholder-img"><i class='bx bx-rocket'></i></div>
+                    <div class="card-info">
+                        <h3>🚀 Spé (TSI 2)</h3>
+                        <p>Préparation aux concours (CNC, etc.).</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+<!-- ==========================================
+         النافذة المنبثقة الأساسية (Modal Overlay)
+         ========================================== -->
+    <div class="modal-overlay" id="myModal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h3 class="modal-title" id="modalTitle">Titre</h3>
+            <div id="modalDynamicContent"></div> 
+        </div>
+    </div>
+
+    <!-- ==========================================
+             المحتوى المخفي (النوافذ المنبثقة للسنوات)
+             ========================================== -->
+        <div style="display: none;">
+            
+            <!-- محتوى نافذة 2STE -->
+            <div id="content-2ste">
+                <div class="level-section">
+                    <h4 class="level-title" style="color: var(--accent); border-bottom: 1px solid #334; padding-bottom: 5px;"><i class='bx bx-cog'></i> Sciences de l'Ingénieur</h4>
+                    <a href="https://drive.google.com/file/d/1JaFhsTFCXMgumjz9ndZOOFoZ7LuCEraS/view?usp=sharing" class="download-link" target="_blank">📄 Résumé ADC (Acquérir, Traiter, Communiquer)</a>
+                    <a href="https://drive.google.com/file/d/1VQvIsi5FtATBXwdOoPjWSIdri9yQu1A1/view?usp=sharing" target="_blank">📄 Résumé ATC (Acquérir, Traiter, Communiquer)</a>
+                    <!-- أضف المزيد من ملفات SI هنا -->
+                </div>
+                <div class="level-section">
+                    <h4 class="level-title" style="color: var(--accent); border-bottom: 1px solid #334; padding-bottom: 5px;"><i class='bx bx-atom'></i> Physique & Chimie</h4>
+                    <a href="https://drive.google.com/file/d/1dKyAmr05qQyD2tXjOK63KYcl7U7C2GK0/view?usp=sharing" class="download-link" target="_blank">📄 Résumé Physique Globale</a>
+                    <a href="https://drive.google.com/file/d/1Op6qNNPG0vbr14-IprZTfjVF4u3R4GdF/view?usp=sharing" class="download-link" target="_blank">📄 Résumé Chimie Globale</a>
+                </div>
+                <div class="level-section">
+                    <h4 class="level-title" style="color: var(--accent); border-bottom: 1px solid #334; padding-bottom: 5px;"><i class='bx bx-math'></i> Mathématiques</h4>
+                    <a href="https://drive.google.com/file/d/1d1F5nmHeNJMVFaV_07rrLGl-1dJGR0iy/view?usp=sharing" class="download-link" target="_blank">📄 Résumé Maths</a>
+                </div>
+            </div>
+
+            <!-- محتوى نافذة Sup -->
+            <div id="content-sup">
+                <p class="coming-soon">Les ressources de la première année seront bientôt disponibles...</p>
+            </div>
+
+            <!-- محتوى نافذة Spé -->
+            <div id="content-spe">
+                <p class="coming-soon">Les ressources de la deuxième année seront bientôt disponibles...</p>
+            </div>
+
+        </div>
+<!-- قسم من أنا والتواصل الذي نزلنا إليه -->
+            <section id="about" class="content-section">
+                <div class="section-header">
+                    <h2><i class='bx bx-user'></i> À propos & Contact</h2>
+                    <p>Découvrez mon parcours et restons en contact.</p>
+                </div>
+                
+                <div class="about-container">
+                    <div class="about-box">
+                        <h3>Qui suis-je ?</h3>
+                        <p>Bonjour, je suis <strong>ABDELHAMID BEN-JAH</strong>, étudiant en Classes Préparatoires aux Grandes Écoles (filière TSI) à <strong>Mohammadia</strong>.</p>
+                        <p>Passionné par les sciences de l'ingénieur, je voue un intérêt particulier à l'électronique, à l'automatique et à l'optimisation des systèmes industriels. Mon approche allie la rigueur analytique des mathématiques et de la physique à la puissance des outils numériques (Python).</p>
+                        <p>Je crois fermement en l'apprentissage continu et en l'importance de partager les connaissances. C'est le but de cet espace.</p>
+                    </div>
+                    
+                    <div class="contact-box">
+                        <h3>Me Contacter</h3>
+                        <div class="social-links">
+                            <a href="mailto:abdelhamidbenjah@gmail.com"><i class='bx bx-envelope'></i> Envoyer un Email</a>
+                            <a href="https://github.com/abdelhamid-eng" target="_blank"><i class='bx bxl-github'></i> Mon GitHub</a>
+                            <a href="https://www.linkedin.com/in/abdelhamid-ben-jah-5a1872409/" target="_blank"><i class='bx bxl-linkedin-square'></i> LinkedIn</a>
                         </div>
                     </div>
                 </div>
             </section>
+        <!-- ربط ملف الجافاسكربت الخارجي -->
 
-        </div>
-    </section>
-
-    <!-- ربط ملف الجافاسكربت الخارجي -->
     <script src="script.js"></script>
 </body>
 </html>
