@@ -4,10 +4,11 @@
 const sidebar = document.querySelector(".sidebar");
 const sidebarBtn = document.querySelector("#btn");
 
-// عند النقر على زر القائمة، قم بتبديل كلاس 'close'
-sidebarBtn.addEventListener("click", () => {
-    sidebar.classList.toggle("close");
-});
+if (sidebarBtn && sidebar) {
+    sidebarBtn.addEventListener("click", () => {
+        sidebar.classList.toggle("close");
+    });
+}
 
 // ==========================================
 // 2. التحكم في الوضع الليلي/النهاري (Theme Toggle)
@@ -15,26 +16,24 @@ sidebarBtn.addEventListener("click", () => {
 const themeBtn = document.querySelector("#theme-btn");
 const body = document.body;
 
-// التحقق مما إذا كان الزائر قد اختار وضعاً معيناً في زيارة سابقة
-const currentTheme = localStorage.getItem("theme");
-if (currentTheme === "light") {
-    body.classList.add("light-mode");
-    themeBtn.classList.replace("bx-moon", "bx-sun"); // تغيير الأيقونة للشمس
-}
-
-// عند النقر على زر الوضع الليلي
-themeBtn.addEventListener("click", () => {
-    body.classList.toggle("light-mode");
-    
-    // تغيير الأيقونة وحفظ الإعداد في ذاكرة المتصفح
-    if (body.classList.contains("light-mode")) {
+if (themeBtn) {
+    const currentTheme = localStorage.getItem("theme");
+    if (currentTheme === "light") {
+        body.classList.add("light-mode");
         themeBtn.classList.replace("bx-moon", "bx-sun");
-        localStorage.setItem("theme", "light"); // حفظ الوضع الفاتح
-    } else {
-        themeBtn.classList.replace("bx-sun", "bx-moon");
-        localStorage.setItem("theme", "dark"); // حفظ الوضع الداكن
     }
-});
+
+    themeBtn.addEventListener("click", () => {
+        body.classList.toggle("light-mode");
+        if (body.classList.contains("light-mode")) {
+            themeBtn.classList.replace("bx-moon", "bx-sun");
+            localStorage.setItem("theme", "light");
+        } else {
+            themeBtn.classList.replace("bx-sun", "bx-moon");
+            localStorage.setItem("theme", "dark");
+        }
+    });
+}
 
 // ==========================================
 // 3. محرك البحث الداخلي الحي (Live Search)
@@ -42,35 +41,97 @@ themeBtn.addEventListener("click", () => {
 const searchInput = document.getElementById("searchInput");
 const projectCards = document.querySelectorAll(".project-card");
 
-searchInput.addEventListener("keyup", (event) => {
-    // تحويل النص المكتوب إلى حروف صغيرة لتسهيل المقارنة
-    const searchQuery = event.target.value.toLowerCase();
+if (searchInput) {
+    searchInput.addEventListener("keyup", (event) => {
+        const searchQuery = event.target.value.toLowerCase();
 
-    // المرور على كل بطاقة في الموقع
-    projectCards.forEach(card => {
-        // جلب العنوان والوصف الخاص بكل بطاقة
-        const title = card.querySelector("h3").innerText.toLowerCase();
-        const description = card.querySelector("p").innerText.toLowerCase();
+        projectCards.forEach(card => {
+            // إضافة حماية للتأكد من وجود العناصر قبل قراءتها
+            const titleElement = card.querySelector("h3");
+            const descElement = card.querySelector("p");
+            
+            const title = titleElement ? titleElement.innerText.toLowerCase() : "";
+            const description = descElement ? descElement.innerText.toLowerCase() : "";
 
-        // إذا كان العنوان أو الوصف يحتوي على كلمة البحث، أظهر البطاقة، وإلا أخفها
-        if (title.includes(searchQuery) || description.includes(searchQuery)) {
-            card.style.display = "block";
-        } else {
-            card.style.display = "none";
-        }
+            if (title.includes(searchQuery) || description.includes(searchQuery)) {
+                card.style.display = "block";
+            } else {
+                card.style.display = "none";
+            }
+        });
     });
-});
+}
 
 // ==========================================
-// 4. تفعيل الروابط الجانبية (Smooth Scrolling)
+// 4. تفعيل الروابط الجانبية للشاشات الصغيرة
 // ==========================================
 const navLinks = document.querySelectorAll('.nav-links li a');
-
 navLinks.forEach(link => {
     link.addEventListener('click', function(e) {
-        // إغلاق القائمة الجانبية في شاشات الهواتف عند الضغط على رابط
-        if(window.innerWidth <= 768) {
+        if(window.innerWidth <= 768 && sidebar) {
             sidebar.classList.add("close");
         }
     });
 });
+
+// ==========================================
+// 5. نظام النوافذ المنبثقة والمجلدات (Modal Navigation)
+// ==========================================
+let modalHistory = [];
+
+function openModal(title, contentId) {
+    modalHistory = [{title: title, id: contentId}]; 
+    renderModal();
+    const modal = document.getElementById('myModal');
+    if (modal) modal.style.display = 'flex';
+}
+
+function navigateModal(title, contentId) {
+    modalHistory.push({title: title, id: contentId}); 
+    renderModal();
+}
+
+function goBackModal() {
+    modalHistory.pop(); 
+    renderModal();
+}
+
+function renderModal() {
+    if (modalHistory.length === 0) return;
+    
+    const current = modalHistory[modalHistory.length - 1];
+    const titleElement = document.getElementById('modalTitle');
+    const contentSource = document.getElementById(current.id);
+    const dynamicContent = document.getElementById('modalDynamicContent');
+
+    // حماية ضد الأخطاء إذا كان مسار المجلد خاطئاً
+    if (!contentSource) {
+        console.error("Erreur : Le contenu avec l'ID '" + current.id + "' est introuvable.");
+        if (dynamicContent) dynamicContent.innerHTML = "<p style='color:#ef4444;'>Contenu introuvable ou en cours de préparation...</p>";
+        return;
+    }
+    if (titleElement) {
+        if (modalHistory.length > 1) {
+            // استخدمت علامات تنصيص عادية هنا لتفادي أي خطأ في النسخ
+            titleElement.innerHTML = "<button onclick='goBackModal()' class='back-btn'><i class='bx bx-arrow-back'></i> Retour</button> <span style='display:block; margin-top:10px;'>" + current.title + "</span>";
+        } else {
+            titleElement.innerHTML = current.title;
+        }
+    }
+
+    if (dynamicContent) {
+        dynamicContent.innerHTML = contentSource.innerHTML;
+    }
+}
+
+function closeModal() {
+    const modal = document.getElementById("myModal");
+    if (modal) modal.style.display = "none";
+}
+
+window.onclick = function(event) {
+    let modal = document.getElementById("myModal");
+    if (event.target === modal) {
+        closeModal();
+    }
+}
