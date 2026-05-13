@@ -135,3 +135,12 @@ window.onclick = function(event) {
         closeModal();
     }
 }
+// ==========================================
+// 6. الإغلاق التلقائي للقائمة في الهواتف عند تحميل الصفحة
+// ==========================================
+window.addEventListener('load', () => {
+    const sidebar = document.querySelector(".sidebar");
+    if (window.innerWidth <= 768 && sidebar) {
+        sidebar.classList.add("close");
+    }
+});
