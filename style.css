@@ -555,3 +555,57 @@ body {
     color: var(--text-primary);
     font-size: 0.95rem;
 }
+/* ==========================================
+   12. التوافق مع الهواتف الذكية (Mobile Responsive)
+   ========================================== */
+@media screen and (max-width: 768px) {
+    /* 1. إخفاء الشريط الجانبي بالكامل خارج الشاشة بدلاً من تصغيره */
+    .sidebar {
+        left: -100%;
+        width: 260px;
+        z-index: 1000;
+    }
+    
+    .sidebar.close {
+        left: -100%;
+    }
+
+    /* عندما نفتح القائمة (الوضع غير المغلق) */
+    .sidebar:not(.close) {
+        left: 0;
+        box-shadow: 0 0 15px rgba(0,0,0,0.5);
+    }
+
+    /* 2. جعل المحتوى الرئيسي يأخذ الشاشة بالكامل */
+    .home-section {
+        left: 0 !important;
+        width: 100% !important;
+    }
+
+    /* 3. إصلاح تداخل الشريط العلوي (Navigation Bar) */
+    .home-section nav {
+        width: 100% !important;
+        left: 0 !important;
+        padding: 15px 20px;
+        box-sizing: border-box;
+    }
+
+    /* 4. دفع المحتوى للأسفل قليلاً لكي لا يختفي تحت الشريط العلوي */
+    .main-content {
+        padding-top: 80px; 
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    /* 5. جعل شبكة المشاريع والبطاقات تأخذ عرض الشاشة بالكامل عمودياً */
+    .projects-grid {
+        grid-template-columns: 1fr; /* عمود واحد بدلاً من عدة أعمدة */
+        gap: 20px;
+    }
+
+    /* 6. تصغير النوافذ المنبثقة (Modals) لتناسب الهاتف */
+    .modal-content {
+        width: 95%;
+        padding: 20px;
+    }
+}
