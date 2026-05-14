@@ -32,6 +32,16 @@
                 </a>
                 <ul class="sub-menu blank"><li><a class="link_name" href="#home">Accueil</a></li></ul>
             </li>
+<!-- زر معرض الأعمال (Portfolio) -->
+            <li>
+                <a href="#" onclick="openModal('Mon Portfolio & Projets', 'content-portfolio'); return false;">
+                    <i class='bx bx-briefcase-alt-2'></i>
+                    <span class="link_name">Portfolio</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="#" onclick="openModal('Mon Portfolio & Projets', 'content-portfolio'); return false;">Portfolio</a></li>
+                </ul>
+            </li>
             <li>
                 <a href="#arduino">
                     <i class='bx bx-bot'></i>
@@ -221,7 +231,30 @@
              المحتوى المخفي (النوافذ المنبثقة للسنوات)
              ========================================== -->
         <div style="display: none;">
+            <!-- ========================================== -->
+        <!-- محتوى معرض الأعمال (Portfolio) للعمل الحر -->
+        <!-- ========================================== -->
+        <div id="content-portfolio">
+            <p style="color: var(--text-muted); margin-bottom: 20px;">Découvrez mes projets en programmation et extraction de données (Web Scraping).</p>
             
+            <div class="projects-grid">
+                <!-- بطاقة مشروع 1 -->
+                <div class="project-card" style="border: 1px solid var(--accent-color);">
+                    <i class='bx bxl-python' style="font-size: 3rem; color: #f59e0b; display: block; text-align: center; margin-bottom: 15px;"></i>
+                    <h3 style="text-align: center;">Web Scraping Automatisé</h3>
+                    <p style="text-align: center; font-size: 0.9rem;">Script Python utilisant BeautifulSoup et Selenium pour extraire des données structurées à partir de sites web dynamiques.</p>
+                    <a href="https://github.com/votre-nom" target="_blank" class="download-link" style="display: block; text-align: center; margin-top: 15px;"><i class='bx bxl-github'></i> Code Source</a>
+                </div>
+
+                <!-- بطاقة مشروع 2 -->
+                <div class="project-card" style="border: 1px solid var(--accent-color);">
+                    <i class='bx bx-bot' style="font-size: 3rem; color: #10b981; display: block; text-align: center; margin-bottom: 15px;"></i>
+                    <h3 style="text-align: center;">Bot d'Analyse de Données</h3>
+                    <p style="text-align: center; font-size: 0.9rem;">Outil de traitement de données (Pandas) qui nettoie et organise les informations extraites sous format CSV/Excel.</p>
+                    <a href="https://github.com/votre-nom" target="_blank" class="download-link" style="display: block; text-align: center; margin-top: 15px;"><i class='bx bxl-github'></i> Code Source</a>
+                </div>
+            </div>
+        </div>
             <!-- محتوى نافذة 2STE -->
             <div id="content-2ste">
                 <div class="level-section">

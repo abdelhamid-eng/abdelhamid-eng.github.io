@@ -608,4 +608,28 @@ body {
         width: 95%;
         padding: 20px;
     }
+/* إصلاح اختفاء زر القائمة وعنوان Ingénierie في الهاتف */
+    .sidebar .logo-details {
+        position: relative;
+        z-index: 1001;
+        background: var(--panel-bg); /* لمنع الشفافية التي تخفي النص */
+    }
+    
+    .sidebar .logo-details .logo_name,
+    .sidebar .logo-details #btn {
+        opacity: 1 !important; /* إجبار العناصر على الظهور دائماً */
+        color: var(--text-primary) !important;
+    }
+}
+/* ==========================================
+   13. تحسين ألوان الروابط (التباين)
+   ========================================== */
+.download-link {
+    color: #60a5fa !important; /* أزرق فاتح مريح جداً للعين في الوضع الداكن */
+    font-weight: 600;
+}
+
+/* في الوضع النهاري (الفاتح) يعود للون الغامق */
+.light-mode .download-link {
+    color: #2563eb !important; 
 }
