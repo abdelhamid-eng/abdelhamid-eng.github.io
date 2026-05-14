@@ -556,72 +556,68 @@ body {
     font-size: 0.95rem;
 }
 /* ==========================================
-   12. التوافق مع الهواتف الذكية (Mobile Responsive)
+  
+/* ==========================================
+   12. التوافق مع الهواتف الذكية (Mobile Responsive) - النسخة المصححة
    ========================================== */
 @media screen and (max-width: 768px) {
-    /* 1. إخفاء الشريط الجانبي بالكامل خارج الشاشة بدلاً من تصغيره */
+    /* 1. إعدادات القائمة الجانبية (منزلقة وليست مصغرة) */
     .sidebar {
-        left: -100%;
-        width: 260px;
+        left: -100% !important; /* مختفية خارج الشاشة افتراضياً */
+        width: 260px !important; /* تحافظ على عرضها الكامل دائماً */
         z-index: 1000;
+        transition: all 0.4s ease;
     }
     
-    .sidebar.close {
-        left: -100%;
-    }
-
-    /* عندما نفتح القائمة (الوضع غير المغلق) */
+    /* عند فتح القائمة */
     .sidebar:not(.close) {
-        left: 0;
-        box-shadow: 0 0 15px rgba(0,0,0,0.5);
+        left: 0 !important;
+        box-shadow: 4px 0 15px rgba(0,0,0,0.5);
     }
 
-    /* 2. جعل المحتوى الرئيسي يأخذ الشاشة بالكامل */
+    /* 2. إجبار الشعار (Ingénierie) وحقل البحث على الظهور بوضوح */
+    .sidebar .logo-details .logo_name,
+    .sidebar .nav-list li .link_name,
+    .sidebar input {
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        display: block !important;
+    }
+
+    .sidebar .bx-search {
+        display: block !important;
+    }
+
+    /* 3. ضبط المحتوى الرئيسي والشريط العلوي */
     .home-section {
         left: 0 !important;
         width: 100% !important;
     }
 
-    /* 3. إصلاح تداخل الشريط العلوي (Navigation Bar) */
     .home-section nav {
         width: 100% !important;
         left: 0 !important;
         padding: 15px 20px;
-        box-sizing: border-box;
+        z-index: 900;
     }
 
-    /* 4. دفع المحتوى للأسفل قليلاً لكي لا يختفي تحت الشريط العلوي */
     .main-content {
         padding-top: 80px; 
         padding-left: 15px;
         padding-right: 15px;
     }
 
-    /* 5. جعل شبكة المشاريع والبطاقات تأخذ عرض الشاشة بالكامل عمودياً */
+    /* 4. جعل البطاقات عمودية */
     .projects-grid {
-        grid-template-columns: 1fr; /* عمود واحد بدلاً من عدة أعمدة */
+        grid-template-columns: 1fr; 
         gap: 20px;
     }
 
-    /* 6. تصغير النوافذ المنبثقة (Modals) لتناسب الهاتف */
     .modal-content {
         width: 95%;
         padding: 20px;
     }
-/* إصلاح اختفاء زر القائمة وعنوان Ingénierie في الهاتف */
-    .sidebar .logo-details {
-        position: relative;
-        z-index: 1001;
-        background: var(--panel-bg); /* لمنع الشفافية التي تخفي النص */
-    }
-    
-    .sidebar .logo-details .logo_name,
-    .sidebar .logo-details #btn {
-        opacity: 1 !important; /* إجبار العناصر على الظهور دائماً */
-        color: var(--text-primary) !important;
-    }
 }
-/* ==========================================
   /* ==========================================
    13. تحسين ألوان الروابط (الروابط الجديدة والمزارة)
    ========================================== */

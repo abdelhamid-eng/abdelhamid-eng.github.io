@@ -1,12 +1,13 @@
-// ==========================================
+
 // 1. التحكم في الشريط الجانبي (Sidebar Toggle)
 // ==========================================
 const sidebar = document.querySelector(".sidebar");
 const sidebarBtn = document.querySelector("#btn");
 
 if (sidebarBtn && sidebar) {
-    sidebarBtn.addEventListener("click", () => {
+    sidebarBtn.addEventListener("click", (e) => {
         sidebar.classList.toggle("close");
+        e.stopPropagation(); // هذا السطر السحري يمنع تداخل الأوامر في الهاتف
     });
 }
 
@@ -147,16 +148,12 @@ window.addEventListener('load', () => {
 // ==========================================
 // 7. إغلاق القائمة الجانبية عند اللمس خارجها (للهواتف)
 // ==========================================
-const homeSection = document.querySelector(".home-section");
-
-if (homeSection && sidebar && sidebarBtn) {
-    homeSection.addEventListener("click", (e) => {
-        // التأكد من أننا في شاشة هاتف وأن القائمة ليست مغلقة
-        if (window.innerWidth <= 768 && !sidebar.classList.contains("close")) {
-            // التأكد من أن الضغطة لم تكن على زر القائمة نفسه لتجنب التداخل
-            if (e.target !== sidebarBtn && !sidebarBtn.contains(e.target)) {
-                sidebar.classList.add("close");
-            }
+// ==========================================
+    // التحقق من أننا في هاتف، وأن القائمة مفتوحة حالياً
+    if (window.innerWidth <= 768 && sidebar && !sidebar.classList.contains("close")) {
+        // إذا كان مكان اللمس ليس داخل القائمة، وليس على الزر نفسه
+        if (!sidebar.contains(e.target) && e.target !== sidebarBtn && !sidebarBtn.contains(e.target)) {
+            sidebar.classList.add("close");
         }
-    });
-}
+    }
+});
