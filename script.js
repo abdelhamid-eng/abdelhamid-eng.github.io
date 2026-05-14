@@ -1,4 +1,4 @@
-
+// ==========================================
 // 1. التحكم في الشريط الجانبي (Sidebar Toggle)
 // ==========================================
 const sidebar = document.querySelector(".sidebar");
@@ -7,7 +7,7 @@ const sidebarBtn = document.querySelector("#btn");
 if (sidebarBtn && sidebar) {
     sidebarBtn.addEventListener("click", (e) => {
         sidebar.classList.toggle("close");
-        e.stopPropagation(); // هذا السطر السحري يمنع تداخل الأوامر في الهاتف
+        e.stopPropagation(); // منع تداخل الأوامر
     });
 }
 
@@ -47,7 +47,6 @@ if (searchInput) {
         const searchQuery = event.target.value.toLowerCase();
 
         projectCards.forEach(card => {
-            // إضافة حماية للتأكد من وجود العناصر قبل قراءتها
             const titleElement = card.querySelector("h3");
             const descElement = card.querySelector("p");
             
@@ -105,22 +104,19 @@ function renderModal() {
     const contentSource = document.getElementById(current.id);
     const dynamicContent = document.getElementById('modalDynamicContent');
 
-    // حماية ضد الأخطاء إذا كان مسار المجلد خاطئاً
     if (!contentSource) {
-        console.error("Erreur : Le contenu avec l'ID '" + current.id + "' est introuvable.");
-        if (dynamicContent) dynamicContent.innerHTML = "<p style='color:#ef4444;'>Contenu introuvable ou en cours de préparation...</p>";
+        if (dynamicContent) dynamicContent.innerHTML = "<p style='color:#ef4444;'>Contenu introuvable...</p>";
         return;
     }
+
     if (titleElement) {
         if (modalHistory.length > 1) {
-            // استخدمت علامات تنصيص عادية هنا لتفادي أي خطأ في النسخ
             titleElement.innerHTML = "<button onclick='goBackModal()' class='back-btn'><i class='bx bx-arrow-back'></i> Retour</button> <span style='display:block; margin-top:10px;'>" + current.title + "</span>";
         } else {
             titleElement.innerHTML = current.title;
         }
     }
-
-    if (dynamicContent) {
+if (dynamicContent) {
         dynamicContent.innerHTML = contentSource.innerHTML;
     }
 }
@@ -136,20 +132,20 @@ window.onclick = function(event) {
         closeModal();
     }
 }
+
 // ==========================================
 // 6. الإغلاق التلقائي للقائمة في الهواتف عند تحميل الصفحة
 // ==========================================
 window.addEventListener('load', () => {
-    const sidebar = document.querySelector(".sidebar");
     if (window.innerWidth <= 768 && sidebar) {
         sidebar.classList.add("close");
     }
 });
+
 // ==========================================
 // 7. إغلاق القائمة الجانبية عند اللمس خارجها (للهواتف)
 // ==========================================
-// ==========================================
-    // التحقق من أننا في هاتف، وأن القائمة مفتوحة حالياً
+document.addEventListener("click", (e) => {
     if (window.innerWidth <= 768 && sidebar && !sidebar.classList.contains("close")) {
         // إذا كان مكان اللمس ليس داخل القائمة، وليس على الزر نفسه
         if (!sidebar.contains(e.target) && e.target !== sidebarBtn && !sidebarBtn.contains(e.target)) {
