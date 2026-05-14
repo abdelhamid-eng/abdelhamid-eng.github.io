@@ -144,3 +144,19 @@ window.addEventListener('load', () => {
         sidebar.classList.add("close");
     }
 });
+// ==========================================
+// 7. إغلاق القائمة الجانبية عند اللمس خارجها (للهواتف)
+// ==========================================
+const homeSection = document.querySelector(".home-section");
+
+if (homeSection && sidebar && sidebarBtn) {
+    homeSection.addEventListener("click", (e) => {
+        // التأكد من أننا في شاشة هاتف وأن القائمة ليست مغلقة
+        if (window.innerWidth <= 768 && !sidebar.classList.contains("close")) {
+            // التأكد من أن الضغطة لم تكن على زر القائمة نفسه لتجنب التداخل
+            if (e.target !== sidebarBtn && !sidebarBtn.contains(e.target)) {
+                sidebar.classList.add("close");
+            }
+        }
+    });
+}

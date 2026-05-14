@@ -622,14 +622,27 @@ body {
     }
 }
 /* ==========================================
-   13. تحسين ألوان الروابط (التباين)
+  /* ==========================================
+   13. تحسين ألوان الروابط (الروابط الجديدة والمزارة)
    ========================================== */
-.download-link {
-    color: #60a5fa !important; /* أزرق فاتح مريح جداً للعين في الوضع الداكن */
+/* الوضع الداكن (الافتراضي) */
+.download-link, 
+.download-link:visited, 
+.download-link:active {
+    color: #60a5fa !important; /* أزرق فاتح وواضح دائماً */
+    text-decoration: none;
     font-weight: 600;
 }
 
-/* في الوضع النهاري (الفاتح) يعود للون الغامق */
-.light-mode .download-link {
-    color: #2563eb !important; 
+/* الوضع النهاري (الفاتح) */
+.light-mode .download-link, 
+.light-mode .download-link:visited, 
+.light-mode .download-link:active {
+    color: #2563eb !important; /* أزرق غامق */
+}
+
+/* التأثير عند تمرير الماوس */
+.download-link:hover {
+    color: #93c5fd !important;
+    text-decoration: underline;
 }
