@@ -27,6 +27,10 @@ body.light-mode {
 /* ==========================================
    2. الإعدادات الأساسية
    ========================================== */
+html {
+    scroll-behavior: smooth; /* هذا السطر يجعل التنقل بين الأقسام منزلقاً وناعماً جداً */
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -356,65 +360,6 @@ body {
 }
 
 /* ==========================================
-   9. تصميم قسم من أنا والتواصل (About & Contact)
-   ========================================== */
-.about-container {
-    display: grid;
-    grid-template-columns: 2fr 1fr; /* تقسيم الشاشة: ثلثين للتعريف وثلث للتواصل */
-    gap: 30px;
-}
-
-.contact-box {
-    background: var(--panel-bg);
-    padding: 30px;
-    border-radius: 12px;
-    border-top: 5px solid var(--accent-color);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-}
-
-.contact-box h3 {
-    color: var(--text-primary);
-    margin-bottom: 20px;
-    font-size: 1.3rem;
-}
-
-.social-links {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.social-links a {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    text-decoration: none;
-    color: var(--text-primary);
-    background: var(--bg-color);
-    padding: 12px 20px;
-    border-radius: 8px;
-    font-weight: 500;
-    transition: all 0.3s ease;
-    border: 1px solid var(--border-color);
-}
-
-.social-links a i {
-    font-size: 24px;
-    color: var(--accent-color);
-}
-
-.social-links a:hover {
-    background: var(--accent-color);
-    color: #fff;
-    transform: translateX(10px); /* حركة انزلاق يميناً عند لمس الزر */
-    box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3);
-}
-
-.social-links a:hover i {
-    color: #fff;
-}
-
-/* ==========================================
    11. تصميم النوافذ المنبثقة والمجلدات (Modals & Folders)
    ========================================== */
 .modal-overlay {
@@ -483,6 +428,322 @@ body {
 
 .folder-card i { font-size: 2.5rem; color: var(--accent-color); margin-bottom: 10px; }
 .folder-card h4 { color: var(--text-primary); font-size: 0.95rem; }
+
+/* ==========================================
+   14. تصميم الواجهة البطلة (Hero Section)
+   ========================================== */
+/* تأثير المؤشر الوامض */
+.typing-text-wrapper {
+    font-size: 1.4rem;
+    color: var(--accent-color);
+    margin-bottom: 20px;
+    font-weight: 600;
+    min-height: 30px; /* لمنع اهتزاز الصفحة */
+}
+.cursor {
+    display: inline-block;
+    width: 3px;
+    background-color: var(--accent-color);
+    animation: blink 1s infinite;
+    margin-left: 4px;
+}
+@keyframes blink { 0%, 49% {opacity: 1;} 50%, 100% {opacity: 0;} }
+
+.hero-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(16, 185, 129, 0.05) 100%);
+    border-radius: 20px;
+    margin-bottom: 40px;
+    border: 1px solid var(--border-color);
+}
+
+.hero-text {
+    flex: 1;
+    padding-right: 40px;
+}
+
+.badge {
+    display: inline-block;
+    padding: 5px 12px;
+    background: rgba(16, 185, 129, 0.1);
+    color: #10b981;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.hero-text h1 {
+    font-size: 2.8rem;
+    color: var(--text-primary);
+    margin-bottom: 10px;
+}
+
+.highlight-text {
+    color: transparent;
+    background: linear-gradient(90deg, #3b82f6, #10b981);
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+.hero-text h2 {
+    font-size: 1.4rem;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.hero-text p {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    max-width: 90%;
+}
+
+/* تنسيق حاوية الأزرار لمنع التمدد العشوائي */
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap; /* يسمح بنزول الزر للسطر التالي في الهواتف الصغيرة جداً */
+    align-items: center;
+    justify-content: flex-start;
+}
+
+
+/* التنسيق الموحد للزرين لمنع التشوه */
+.btn-primary, .btn-secondary {
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    text-decoration: none;
+    width: fit-content !important; /* هذا السطر يمنع الزر الأزرق من التمدد كالوحش */
+    white-space: nowrap !important; /* هذا السطر يمنع تكسر الكلمات مثلما حدث لك */
+    flex: none;
+}
+
+/* ألوان الزر الأزرق */
+.btn-primary {
+    background: #3b82f6;
+    color: #ffffff !important;
+    border: 2px solid #3b82f6;
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+}
+
+.btn-primary:hover {
+    background: #2563eb;
+    border-color: #2563eb;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+}
+
+/* ألوان زر لينكد إن (الشفاف الأنيق) */
+.btn-secondary {
+    background: transparent;
+    color: var(--text-primary) !important;
+    border: 2px solid var(--border-color);
+}
+
+.btn-secondary:hover {
+    border-color: #10b981; /* يتغير لونه للأخضر الفاتح أو الأزرق عند اللمس */
+    color: #10b981 !important;
+    transform: translateY(-3px);
+    background: rgba(16, 185, 129, 0.05);
+}
+
+
+
+/* تصميم الصورة المتوهجة */
+.hero-image-wrapper {
+    position: relative;
+    width: 250px;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    z-index: 2;
+    position: relative;
+    border: 5px solid var(--panel-bg);
+}
+
+.glow-ring {
+    position: absolute;
+    width: 105%;
+    height: 105%;
+    background: linear-gradient(45deg, #3b82f6, #10b981);
+    border-radius: 50%;
+    z-index: 1;
+    filter: blur(15px);
+    opacity: 0.7;
+    animation: pulse 3s infinite alternate;
+}
+
+@keyframes pulse {
+    0% { transform: scale(0.95); opacity: 0.5; }
+    100% { transform: scale(1.05); opacity: 0.8; }
+}
+
+/* الفاصل الأنيق */
+.section-divider {
+    margin: 40px 0 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.section-divider h3 {
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+    white-space: nowrap;
+}
+
+.section-divider .line {
+    height: 1px;
+    flex: 1;
+    background: var(--border-color);
+}
+
+/* تصميم أوسمة المهارات (Skills Badges) */
+.skills-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.skill-tag {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    background: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.skill-tag i {
+    font-size: 1.15rem;
+    color: var(--accent-color);
+}
+
+.skill-tag:hover {
+    border-color: var(--accent-color);
+    background: rgba(59, 130, 246, 0.05);
+    color: var(--text-primary);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(59, 130, 246, 0.15);
+}
+
+/* ==========================================
+   شاشة الدخول السينمائية (Splash Screen)
+   ========================================== */
+.splash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--bg-color); /* تأخذ لون الموقع (داكن أو فاتح) */
+    z-index: 9999; /* رقم كبير جداً لتغطية كل شيء في الموقع */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.8s cubic-bezier(0.8, 0, 0.2, 1); /* حركة انزلاق سينمائية سريعة في النهاية */
+}
+
+/* الكلاس الذي سيتم إضافته لإخفاء الشاشة (تنزلق للأعلى) */
+.splash-screen.hidden {
+    transform: translateY(-100%);
+}
+
+.splash-logo {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    letter-spacing: 2px;
+}
+
+.splash-logo .bracket {
+    color: var(--accent-color); /* تلوين الأقواس باللون الأزرق التقني */
+}
+
+/* خط التحميل الأنيق */
+.loading-bar {
+    width: 150px;
+    height: 3px;
+    background: var(--border-color);
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+}
+
+.loading-bar::after {
+    content: '';
+    position: absolute;
+    left: -50%;
+    top: 0;
+    height: 100%;
+    width: 50%;
+    background: var(--accent-color);
+    animation: loading 1s infinite ease-in-out;
+    border-radius: 5px;
+}
+
+@keyframes loading {
+    0% { left: -50%; }
+    100% { left: 100%; }
+}
+/* تعديل للهواتف (ضعه داخل قسم @media max-width: 768px في الأسفل) */
+@media screen and (max-width: 768px) {
+    .hero-container {
+        flex-direction: column-reverse;
+        text-align: center;
+        padding: 30px 15px;
+    }
+    .hero-text {
+        padding-right: 0;
+    }
+    .hero-text p {
+        max-width: 100%;
+    }
+    .hero-buttons {
+        flex-direction: column;
+        justify-content: center;
+    }
+    .hero-image-wrapper {
+        width: 180px;
+        height: 180px;
+        margin-bottom: 25px;
+    }
+}
 /* تجاوب قسم التواصل مع الهواتف */
 @media (max-width: 768px) {
     .about-container {
@@ -555,8 +816,120 @@ body {
     color: var(--text-primary);
     font-size: 0.95rem;
 }
+
 /* ==========================================
-  
+  /* ==========================================
+   11. قسم التواصل ونموذج المراسلة (Contact & Form)
+   ========================================== */
+.about-container {
+    display: flex;
+    flex-wrap: wrap; /* للسماح بالنزول في الشاشات الصغيرة */
+    gap: 40px; /* الفراغ الواضح والمريح بين المراسلة والشبكات */
+    align-items: flex-start; 
+}
+
+
+.contact-box {
+    background: var(--panel-bg);
+    padding: 30px;
+    border-radius: 12px;
+    border-top: 5px solid var(--accent-color);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    flex: 1 1 200px; /* الحجم الأساسي لصندوق الشبكات ليصبح صغيراً وأنيقاً */
+}
+
+/* إجبار صندوق المراسلة على أخذ مساحة أكبر من صندوق الشبكات */
+.contact-box:first-child {
+    flex: 2 1 400px; 
+}
+
+.contact-box h3 { 
+    color: var(--text-primary); 
+    margin-bottom: 20px; 
+    font-size: 1.3rem; 
+    display: flex;
+    align-items: center;
+}
+
+.contact-box h3 i {
+    color: var(--accent-color);
+    margin-right: 10px;
+    font-size: 1.5rem;
+}
+
+/* ---------------------------------
+   تنسيق نموذج المراسلة (Contact Form)
+   --------------------------------- */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-input {
+    width: 100%;
+    padding: 15px;
+    background: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    font-family: inherit;
+    resize: vertical;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+.form-input::placeholder {
+    color: var(--text-secondary);
+}
+
+.contact-form button {
+    margin-top: 10px; /* إبعاد الزر عن مربع النص قليلاً لكي لا يخرج عن الإطار */
+}
+
+/* ---------------------------------
+   أزرار السوشيال ميديا (Social Links)
+   --------------------------------- */
+.social-links { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 15px;
+}
+.social-links a {
+    display: flex; 
+    align-items: center; 
+    gap: 12px; 
+    text-decoration: none;
+    color: var(--text-primary); 
+    background: var(--bg-color); 
+    padding: 12px 20px;
+    border-radius: 8px; 
+    font-weight: 500; 
+    transition: all 0.3s ease; 
+    border: 1px solid var(--border-color);
+}
+
+.social-links a i { 
+    font-size: 24px; 
+    color: var(--accent-color); 
+}
+
+.social-links a:hover {
+    background: var(--accent-color); 
+    color: #fff; 
+    transform: translateX(10px);
+    border-color: var(--accent-color);
+}
+
+.social-links a:hover i { 
+    color: #fff; 
+}
 /* ==========================================
    12. التوافق مع الهواتف الذكية (Mobile Responsive) - النسخة المصححة
    ========================================== */
@@ -617,6 +990,10 @@ body {
         width: 95%;
         padding: 20px;
     }
+
+.about-container {
+        grid-template-columns: 1fr; /* جعل الصناديق فوق بعضها في الجوال */
+    }
 }
   /* ==========================================
    13. تحسين ألوان الروابط (الروابط الجديدة والمزارة)
@@ -642,3 +1019,113 @@ body {
     color: #93c5fd !important;
     text-decoration: underline;
 }
+
+
+/* ==========================================
+   15. تصميم عدادات الإنجاز (Stats Counters)
+   ========================================== */
+.stats-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 40px;
+    background: var(--bg-color);
+    padding: 30px;
+    border-radius: 15px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.stat-box {
+    text-align: center;
+    flex: 1;
+    min-width: 150px;
+}
+
+.stat-box i {
+    font-size: 2.5rem;
+    color: var(--accent-color);
+    margin-bottom: 10px;
+}
+
+.stat-box h3 {
+    font-size: 2.2rem;
+    color: var(--text-primary);
+    margin-bottom: 5px;
+}
+
+.stat-box p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+/* ==========================================
+   16. شريط التمرير الاحترافي (Custom Scrollbar)
+   ========================================== */
+/* عرض الشريط */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* مسار الشريط (الخلفية) */
+::-webkit-scrollbar-track {
+    background: var(--bg-color);
+}
+
+/* الجزء المتحرك (المقبض) */
+::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 10px;
+    border: 2px solid var(--bg-color); /* يعطي تأثيراً جميلاً بالتباعد */
+}
+
+/* عند تمرير الماوس فوق الشريط */
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-color);
+}
+
+
+/* ==========================================
+   17. تأثير الزجاج للشريط العلوي (Glassmorphism)
+   ========================================== */
+.home-section nav {
+    background: rgba(var(--panel-bg-rgb, 255, 255, 255), 0.7) !important; /* شفافية بنسبة 70% */
+    backdrop-filter: blur(12px); /* السحر هنا: تمويه ما خلف الشريط */
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(128, 128, 128, 0.1);
+}
+
+/* ستحتاج لإضافة هذا المتغير في أعلى ملف CSS داخل :root و .light-mode */
+:root {
+    --panel-bg-rgb: 17, 24, 39; /* لكي يعمل تأثير الزجاج في الوضع الداكن */
+}
+.light-mode {
+    --panel-bg-rgb: 255, 255, 255; /* لكي يعمل تأثير الزجاج في الوضع الفاتح */
+}
+
+
+/* ==========================================
+   18. تأثير الظهور السينمائي (Scroll Reveal)
+   ========================================== */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px); /* يبدأ من الأسفل بـ 40 بكسل */
+    transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); /* حركة فيزيائية ناعمة جداً */
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0); /* يعود لمكانه الطبيعي */
+}
+
+
+<div class="hero-buttons">
+                            <a href="#portfolio" class="btn-primary">
+                                <i class='bx bx-rocket'></i> Voir mes Projets
+                            </a>
+                            <a href="https://www.linkedin.com/in/[حسابك]" target="_blank" class="btn-secondary">
+                                <i class='bx bxl-linkedin'></i> LinkedIn
+                            </a>
+                        </div>

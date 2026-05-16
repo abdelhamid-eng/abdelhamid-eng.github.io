@@ -4,6 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Espace Ingénierie | Portfolio & Ressources</title>
+
+    <meta name="description" content="Portfolio d'Ingénierie et Ressources CPGE TSI. Spécialisé en développement Python, Web Scraping et sciences de l'ingénieur.">
+    <meta name="keywords" content="Portfolio, Ingénierie, CPGE, TSI, Python, Web Scraping, Développeur, Maroc, CNC">
+    <meta name="author" content="ABDELHAMID BEN-JAH">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://abdelhamid-eng.github.io/MonPortfolio/">
+    <meta property="og:title" content="Espace Ingénierie | Portfolio & Projets">
+    <meta property="og:description" content="Découvrez mon parcours en classes préparatoires (TSI) et mes projets en développement Python et automatisation.">
+    <meta property="og:image" content="https://abdelhamid-eng.github.io/MonPortfolio/preview.jpg">
+
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://abdelhamid-eng.github.io/MonPortfolio/">
+    <meta property="twitter:title" content="Espace Ingénierie | Portfolio & Projets">
+    <meta property="twitter:description" content="Découvrez mon parcours en classes préparatoires (TSI) et mes projets en développement Python et automatisation.">
+    <meta property="twitter:image" content="https://abdelhamid-eng.github.io/MonPortfolio/preview.jpg">
     
     <!-- استيراد خط Poppins العصري -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -15,6 +31,15 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+<div class="splash-screen" id="splashScreen">
+        <div class="splash-logo">
+            <span class="bracket">&lt;</span>
+            <span class="name">Ingénierie</span>
+            <span class="bracket">/&gt;</span>
+        </div>
+        <div class="loading-bar"></div>
+    </div>
 
     <!-- ==========================================
          1. شريط التنقل الجانبي (Sidebar)
@@ -34,12 +59,12 @@
             </li>
 <!-- زر معرض الأعمال (Portfolio) -->
             <li>
-                <a href="#" onclick="openModal('Mon Portfolio & Projets', 'content-portfolio'); return false;">
-                    <i class='bx bx-briefcase-alt-2'></i>
+                <a href="#portfolio">
+                    <i class='bx bx-briefcase'></i>
                     <span class="link_name">Portfolio</span>
                 </a>
                 <ul class="sub-menu blank">
-                    <li><a class="link_name" href="#" onclick="openModal('Mon Portfolio & Projets', 'content-portfolio'); return false;">Portfolio</a></li>
+                    <li><a class="link_name" href="#portfolio">Portfolio</a></li>
                 </ul>
             </li>
             <li>
@@ -98,127 +123,194 @@
 
         <!-- المحتوى الفعلي للموقع -->
         <div class="main-content">
-            
-            <!-- قسم الترحيب والإحصائيات السريعة -->
-            <div class="hero-header" id="home">
-                <h1 class="gradient-text">Bienvenue dans mon espace de conception</h1>
-                <p>Où la théorie des systèmes rencontre la pratique de l'électronique.</p>
-                <p>Par ABDELHAMID BEN-JAH élève Ingénieur en CPGE (TSI) | Passionné par l'Asservissement, Python et l'Électronique.</p>
 
-                <div class="stats-grid">
-                    <div class="stat-box">
-<i class='bx bx-microchip'></i>
-                        <div><h3>Électronique</h3><p>Projets & Circuits</p></div>
+            <div class="hero-container">
+                <div class="hero-text">
+                    <span class="badge">Disponible pour des missions (Freelance)</span>
+                    <h1>Bonjour, je suis <span class="highlight-text">ABDELHAMID BEN-JAH</span></h1>
+                    <h2 class="typing-text-wrapper"><span id="typed-text"></span><span class="cursor">&nbsp;</span></h2>
+                    <p>Je combine la rigueur analytique des classes préparatoires avec la puissance du code. Spécialisé en <strong>Web Scraping</strong>, automatisation et sciences de l'ingénieur.</p>
+                        <div class="skills-badges">
+                            <span class="skill-tag"><i class='bx bxl-python'></i> Python</span>
+                            <span class="skill-tag"><i class='bx bxl-tux'></i> Linux</span>
+                            <span class="skill-tag"><i class='bx bx-data'></i> Web Scraping</span>
+                            <span class="skill-tag"><i class='bx bx-microchip'></i> Arduino / C++</span>
+                        </div>
+                    <div class="hero-buttons">
+                        <a href="#portfolio" class="btn-primary">
+                                <i class='bx bx-rocket'></i> Voir mes Projets
+                            </a>
+                        <a href="https://www.linkedin.com/in/abdelhamid-ben-jah-5a1872409/" target="_blank" class="btn-secondary">
+                            <i class='bx bxl-linkedin'></i> Connectons-nous
+                        </a>
                     </div>
-                    <div class="stat-box">
-                        <i class='bx bx-code-alt'></i>
-                        <div><h3>Développement</h3><p>Scripts & Algorithmes</p></div>
-                    </div>
-                    <div class="stat-box">
-                        <i class='bx bx-book-open'></i>
-                        <div><h3>Synthèses</h3><p>Physique, Maths, SI</p></div>
-                    </div>
+                </div>
+                
+                <div class="hero-image-wrapper">
+                    <img src="images/photo.png" alt="" class="hero-img">
+                    <div class="glow-ring"></div>
                 </div>
             </div>
 
-            <!-- قسم مشاريع الأردوينو والإلكترونيات -->
+            <div class="stats-container">
+                    <div class="stat-box">
+                        <i class='bx bx-code-alt'></i>
+                        <h3 class="counter" data-target="15">0</h3>
+                        <p>Projets Python</p>
+                    </div>
+                    <div class="stat-box">
+                        <i class='bx bx-book-open'></i>
+                        <h3 class="counter" data-target="40">0</h3>
+                        <p>Fiches CPGE</p>
+                    </div>
+                    <div class="stat-box">
+                        <i class='bx bx-coffee'></i>
+                        <h3 class="counter" data-target="120">0</h3>
+                        <p>Heures de Code</p>
+                    </div>
+            </div>
+
+
+            <div class="hero-header" id="home">
+                    <h1 class="gradient-text">Bienvenue dans mon espace de conception</h1>
+                    <p>Où la théorie des systèmes rencontre la pratique de l'électronique.</p>
+                     
+            </div>
+
+
+            <div class="section-divider reveal" id="portfolio">
+                <h3>Mon Portfolio / Freelance</h3>
+                <div class="line"></div>
+            </div>
+
+            <div class="dynamic-grid reveal">
+
+                <div class="project-card">
+                    <div class="card-img">
+                        <i class='bx bxl-python'></i>
+                    </div>
+                    <div class="card-info">
+                        <h3>Web Scraping - Catalogues E-commerce</h3>
+                        <p>Développement de scripts Python avec BeautifulSoup et Requests pour l'extraction de données de masse (Jumia Maroc).</p>
+                        <a href="https://github.com/abdelhamid-eng/abdelhamid-eng.github.io" target="_blank" class="download-link"><i class='bx bx-link-external'></i> Voir le Code Source</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="card-img">
+                        <i class='bx bx-bot'></i>
+                    </div>
+                    <div class="card-info">
+                        <h3>Automatisation & Scripting Python</h3>
+                        <p>Création d'outils d'analyse de données et optimisation de flux de travail locaux sous Linux Mint.</p>
+                        <a href="#" class="download-link"><i class='bx bx-code-block'></i> En cours de préparation</a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="section-divider">
+                <h3>Ressources Prépa (CPGE)</h3>
+                <div class="line"></div>
+            </div> 
+         
             <section id="arduino" class="content-section">
                 <div class="section-header">
                     <h2><i class='bx bx-bot'></i> Projets Arduino & Électronique embarquée</h2>
                     <p>Conception, câblage et programmation de microcontrôleurs.</p>
                 </div>
-                <div class="dynamic-grid" id="arduino-grid">
-                    <!-- سيتم إضافة المشاريع هنا لاحقاً عبر HTML أو JS -->
+               
+                <div class="dynamic-grid reveal">
+        
                     <div class="project-card">
-                        <div class="card-img placeholder-img"><i class='bx bx-image'></i></div>
+                        <div class="card-img">
+                            <i class='bx bx-slider-alt'></i>
+                        </div>
                         <div class="card-info">
-                            <h3>Asservissement de Moteur CC</h3>
-                            <p>Contrôle PID d'un moteur via Arduino avec retour codeur.</p>
-                            <button class="btn-primary">Voir les détails</button>
+                            <h3>Automatique & Asservissement</h3>
+                            <p>Systèmes asservis linéaires, modélisation par transformée de Laplace et étude de stabilité.</p>
                         </div>
                     </div>
-                </div>
-                <!-- بطاقة مشروع TIPE -->
-                <div class="project-card">
-                    <div class="card-img placeholder-img"><i class='bx bx-cog'></i></div>
-                    <div class="card-info">
-                        <h3>Projet TIPE 2027 : Sobriété & Efficacité</h3>
-                        <p>Recherche sur l'optimisation des systèmes mécaniques pour réduire les pertes énergétiques.</p>
-                        <button class="btn-primary">En cours de développement...</button>
-                    </div>
-                </div>
 
-                <!-- بطاقة مشروع برمجة -->
-                <div class="project-card">
-                    <div class="card-img placeholder-img"><i class='bx bx-code-block'></i></div>
-                    <div class="card-info">
-                        <h3>Web Scraping & Analyse Data</h3>
-                        <p>Scripts Python utilisant BeautifulSoup et Numpy pour l'extraction et l'analyse de données.</p>
-                        <!-- إذا كان لديك الكود على GitHub، يمكنك وضع الرابط هكذا -->
-                        <a href="رابط-الكود-هنا" class="btn-primary" style="display:block; text-align:center; text-decoration:none;">Voir le Code</a>
+                    <div class="project-card">
+                        <div class="card-img">
+                            <i class='bx bx-lightbulb'></i>
+                        </div>
+                        <div class="card-info">
+                            <h3>Projet TIPE 2027</h3>
+                            <p>Recherche et optimisation système centrée sur l'efficacité énergétique et la sobriété.</p>
+                        </div>
                     </div>
+
                 </div>
             </section>
 
-            <!-- قسم المحاكاة (Simulations) -->
             <section id="simulation" class="content-section">
                 <div class="section-header">
                     <h2><i class='bx bx-desktop'></i> Simulations & CAO</h2>
                     <p>Modélisation de systèmes dynamiques et circuits (Proteus, Matlab/Simulink...).</p>
                 </div>
-                <div class="dynamic-grid" id="sim-grid">
+               
+                <div class="dynamic-grid reveal">
+
                     <div class="project-card">
-                        <div class="card-img placeholder-img"><i class='bx bx-line-chart'></i></div>
+                        <div class="card-img">
+                            <i class='bx bx-line-chart'></i>
+                        </div>
                         <div class="card-info">
                             <h3>Réponse Temporelle d'un Système</h3>
                             <p>Simulation d'un système du second ordre soumis à un échelon.</p>
-                            <button class="btn-primary">Voir la simulation</button>
+                            <button class="btn-primary" style="width: auto; margin-top: 10px;">Voir la simulation</button>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="card-img">
+                            <i class='bx bx-analyse'></i>
+                        </div>
+                        <div class="card-info">
+                            <h3>Optimisation & Simulation Multi-physique</h3>
+                            <p>Modélisation numérique des performances et rendement des systèmes industriels.</p>
+                            <button class="btn-primary" style="width: auto; margin-top: 10px;">Lancer l'analyse</button>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <section id="library" class="content-section">
+                <div class="section-header">
+                    <h2><i class='bx bx-library'></i> Bibliothèque des Ressources</h2>
+                    <p>Sélectionnez votre niveau d'études pour accéder aux fiches par matière.</p>
+                </div>
+                
+                <div class="dynamic-grid" id="library-grid">
+                    <div class="project-card" style="cursor: pointer;" onclick="openModal('Baccalauréat (2STE)', 'content-2ste')">
+                        <div class="card-img placeholder-img"><i class='bx bx-medal'></i></div>
+                        <div class="card-info">
+                            <h3>🎓 2STE</h3>
+                            <p>Sciences et Technologies Électriques.</p>
+                        </div>
+                    </div>
+
+                    <div class="project-card" style="cursor: pointer;" onclick="openModal('CPGE (1ère année - Sup)', 'content-sup')">
+                        <div class="card-img placeholder-img"><i class='bx bx-book-reader'></i></div>
+                        <div class="card-info">
+                            <h3>📘 Sup (TSI 1)</h3>
+                            <p>Physique, Maths, SI et Informatique.</p>
+                        </div>
+                    </div>
+
+                    <div class="project-card" style="cursor: pointer;" onclick="openModal('CPGE (2ème année - Spé)', 'content-spe')">
+                        <div class="card-img placeholder-img"><i class='bx bx-rocket'></i></div>
+                        <div class="card-info">
+                            <h3>🚀 Spé (TSI 2)</h3>
+                            <p>Préparation aux concours (CNC, etc.).</p>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- قسم المكتبة الموسوعية -->
- <!-- قسم المكتبة الموسوعية (حسب السنوات) -->
-        <section id="library" class="content-section">
-            <div class="section-header">
-                <h2><i class='bx bx-library'></i> Bibliothèque des Ressources</h2>
-                <p>Sélectionnez votre niveau d'études pour accéder aux fiches par matière.</p>
-            </div>
-            
-            <div class="dynamic-grid" id="library-grid">
-                <!-- بطاقة 2STE -->
-                <div class="project-card" style="cursor: pointer;" onclick="openModal('Baccalauréat (2STE)', 'content-2ste')">
-                    <div class="card-img placeholder-img"><i class='bx bx-medal'></i></div>
-                    <div class="card-info">
-                        <h3>🎓 2STE</h3>
-                        <p>Sciences et Technologies Électriques.</p>
-                    </div>
-                </div>
-
-                <!-- بطاقة Sup -->
-                <div class="project-card" style="cursor: pointer;" onclick="openModal('CPGE (1ère année - Sup)', 'content-sup')">
-                    <div class="card-img placeholder-img"><i class='bx bx-book-reader'></i></div>
-                    <div class="card-info">
-                        <h3>📘 Sup (TSI 1)</h3>
-                        <p>Physique, Maths, SI et Informatique.</p>
-                    </div>
-                </div>
-
-                <!-- بطاقة Spé -->
-                <div class="project-card" style="cursor: pointer;" onclick="openModal('CPGE (2ème année - Spé)', 'content-spe')">
-                    <div class="card-img placeholder-img"><i class='bx bx-rocket'></i></div>
-                    <div class="card-info">
-                        <h3>🚀 Spé (TSI 2)</h3>
-                        <p>Préparation aux concours (CNC, etc.).</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-<!-- ==========================================
-         النافذة المنبثقة الأساسية (Modal Overlay)
-         ========================================== -->
     <div class="modal-overlay" id="myModal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal()">&times;</span>
@@ -227,40 +319,35 @@
         </div>
     </div>
 
-    <!-- ==========================================
-             المحتوى المخفي (النوافذ المنبثقة للسنوات)
-             ========================================== -->
-        <div style="display: none;">
-            <!-- ========================================== -->
-        <!-- محتوى معرض الأعمال (Portfolio) للعمل الحر -->
-        <!-- ========================================== -->
+    <div style="display: none;">
         <div id="content-portfolio">
             <p style="color: var(--text-muted); margin-bottom: 20px;">Découvrez mes projets en programmation et extraction de données (Web Scraping).</p>
             
-            <div class="projects-grid">
-                <!-- بطاقة مشروع 1 -->
+            <div class="dynamic-grid">
                 <div class="project-card" style="border: 1px solid var(--accent-color);">
                     <i class='bx bxl-python' style="font-size: 3rem; color: #f59e0b; display: block; text-align: center; margin-bottom: 15px;"></i>
                     <h3 style="text-align: center;">Web Scraping Automatisé</h3>
                     <p style="text-align: center; font-size: 0.9rem;">Script Python utilisant BeautifulSoup et Selenium pour extraire des données structurées à partir de sites web dynamiques.</p>
-                    <a href="https://github.com/votre-nom" target="_blank" class="download-link" style="display: block; text-align: center; margin-top: 15px;"><i class='bx bxl-github'></i> Code Source</a>
+                    <a href="https://github.com/abdelhamid-eng/abdelhamid-eng.github.io" target="_blank" class="download-link" style="display: block; text-align: center; margin-top: 15px;"><i class='bx bxl-github'></i> Code Source</a>
                 </div>
 
-                <!-- بطاقة مشروع 2 -->
                 <div class="project-card" style="border: 1px solid var(--accent-color);">
                     <i class='bx bx-bot' style="font-size: 3rem; color: #10b981; display: block; text-align: center; margin-bottom: 15px;"></i>
                     <h3 style="text-align: center;">Bot d'Analyse de Données</h3>
                     <p style="text-align: center; font-size: 0.9rem;">Outil de traitement de données (Pandas) qui nettoie et organise les informations extraites sous format CSV/Excel.</p>
-                    <a href="https://github.com/votre-nom" target="_blank" class="download-link" style="display: block; text-align: center; margin-top: 15px;"><i class='bx bxl-github'></i> Code Source</a>
+                    <a href="https://github.com/abdelhamid-eng/abdelhamid-eng.github.io" target="_blank" class="download-link" style="display: block; text-align: center; margin-top: 15px;"><i class='bx bxl-github'></i> Code Source</a>
                 </div>
             </div>
         </div>
+    </div>
+   
+    <div style="display: none;">
             <!-- محتوى نافذة 2STE -->
             <div id="content-2ste">
                 <div class="level-section">
                     <h4 class="level-title" style="color: var(--accent); border-bottom: 1px solid #334; padding-bottom: 5px;"><i class='bx bx-cog'></i> Sciences de l'Ingénieur</h4>
-                    <a href="https://drive.google.com/file/d/1JaFhsTFCXMgumjz9ndZOOFoZ7LuCEraS/view?usp=sharing" class="download-link" target="_blank">📄 Résumé ADC (Acquérir, Traiter, Communiquer)</a>
-                    <a href="https://drive.google.com/file/d/1VQvIsi5FtATBXwdOoPjWSIdri9yQu1A1/view?usp=sharing" target="_blank">📄 Résumé ATC (Acquérir, Traiter, Communiquer)</a>
+                    <a href="https://drive.google.com/file/d/1JaFhsTFCXMgumjz9ndZOOFoZ7LuCEraS/view?usp=sharing" class="download-link" target="_blank">📄 Résumé ADC</a>
+                    <a href="https://drive.google.com/file/d/1VQvIsi5FtATBXwdOoPjWSIdri9yQu1A1/view?usp=sharing" class="download-link" target="_blank">📄 Résumé ATC </a>
                     <!-- أضف المزيد من ملفات SI هنا -->
                 </div>
                 <div class="level-section">
@@ -293,25 +380,38 @@
                 </div>
                 
                 <div class="about-container">
-                    <div class="about-box">
-                        <h3>Qui suis-je ?</h3>
-                        <p>Bonjour, je suis <strong>ABDELHAMID BEN-JAH</strong>, étudiant en Classes Préparatoires aux Grandes Écoles (filière TSI) à <strong>Mohammadia</strong>.</p>
-                        <p>Passionné par les sciences de l'ingénieur, je voue un intérêt particulier à l'électronique, à l'automatique et à l'optimisation des systèmes industriels. Mon approche allie la rigueur analytique des mathématiques et de la physique à la puissance des outils numériques (Python).</p>
-                        <p>Je crois fermement en l'apprentissage continu et en l'importance de partager les connaissances. C'est le but de cet espace.</p>
-                    </div>
                     
                     <div class="contact-box">
-                        <h3>Me Contacter</h3>
+                        <h3><i class='bx bx-envelope'></i> Envoyez-moi un message</h3>
+                        <form action="https://formspree.io/f/mdajnarl" method="POST" class="contact-form">
+                            <input type="text" name="name" placeholder="Votre Nom complet" required class="form-input">
+                            <input type="email" name="email" placeholder="Votre adresse Email" required class="form-input">
+                            <textarea name="message" placeholder="Comment puis-je vous aider ?" rows="4" required class="form-input"></textarea>
+                            <button type="submit" class="btn-primary" style="width: 100%;">
+                                <i class='bx bx-send'></i> Envoyer le message
+                            </button>
+                        </form>
+                    </div>
+
+                    <div class="contact-box">
+                        <h3><i class='bx bx-link'></i> Mes Réseaux</h3>
                         <div class="social-links">
-                            <a href="mailto:abdelhamidbenjah@gmail.com"><i class='bx bx-envelope'></i> Envoyer un Email</a>
-                            <a href="https://github.com/abdelhamid-eng" target="_blank"><i class='bx bxl-github'></i> Mon GitHub</a>
-                            <a href="https://www.linkedin.com/in/abdelhamid-ben-jah-5a1872409/" target="_blank"><i class='bx bxl-linkedin-square'></i> LinkedIn</a>
+                            <a href="https://www.linkedin.com/in/abdelhamid-ben-jah-5a1872409/" target="_blank">
+                                <i class='bx bxl-linkedin-square'></i> LinkedIn
+                            </a>
+                            <a href="https://abdelhamid-eng.github.io/" target="_blank">
+                                <i class='bx bxl-github'></i> GitHub
+                            </a>
+                            <a href="mailto:abdelhamidbenjah@gmail.com">
+                                <i class='bx bx-mail-send'></i> Email Direct
+                            </a>
                         </div>
                     </div>
-                </div>
-            </section>
+                    
+                </div> </section>
         <!-- ربط ملف الجافاسكربت الخارجي -->
 
     <script src="script.js"></script>
 </body>
 </html>
+
