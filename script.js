@@ -270,3 +270,51 @@ window.addEventListener('load', () => {
         }, 1000); 
     }
 });
+
+
+// ==========================================
+// إرسال الرسائل في الخلفية (Formspree AJAX)
+// ==========================================
+const contactForm = document.getElementById("my-contact-form");
+const formStatus = document.getElementById("my-form-status");
+
+if (contactForm) {
+    contactForm.addEventListener("submit", async function(event) {
+        // 1. إيقاف المتصفح من الانتقال لصفحة Formspree
+        event.preventDefault(); 
+        
+        // 2. جمع البيانات التي كتبها الزائر
+        const data = new FormData(contactForm);
+        
+        // 3. إظهار رسالة "جاري الإرسال..." مؤقتة
+        formStatus.innerHTML = "<span style='color: var(--text-secondary);'><i class='bx bx-loader-alt bx-spin'></i> Envoi en cours...</span>";
+        
+        try {
+            // 4. إرسال البيانات في الخلفية
+            const response = await fetch(contactForm.action, {
+                method: contactForm.method,
+                body: data,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+            
+            // 5. إذا نجح الإرسال
+            if (response.ok) {
+                formStatus.innerHTML = "<span style='color: #10b981;'><i class='bx bx-check-circle'></i> Message envoyé avec succès !</span>";
+                contactForm.reset(); // مسح الخانات لكي لا يرسل نفس الرسالة مرتين
+            } else {
+                // إذا كان هناك خطأ من السيرفر
+                formStatus.innerHTML = "<span style='color: #ef4444;'><i class='bx bx-error-circle'></i> Oups! Il y a eu un problème.</span>";
+            }
+        } catch (error) {
+            // إذا انقطع الإنترنت
+            formStatus.innerHTML = "<span style='color: #ef4444;'><i class='bx bx-wifi-off'></i> Erreur de connexion au réseau.</span>";
+        }
+        
+        // 6. إخفاء رسالة النجاح بعد 5 ثوانٍ لتعود الشاشة نظيفة
+        setTimeout(() => {
+            formStatus.innerHTML = "";
+        }, 5000);
+    });
+}
